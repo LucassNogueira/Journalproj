@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import firebase from "../firebase/config";
 import { v4 as uuidv4 } from "uuid";
 import { dateString } from "./Date";
+
 const entriesDB = firebase.firestore().collection("Entries");
 const Home = () => {
   const [title, setTitle] = useState("");
@@ -45,7 +46,12 @@ const Home = () => {
             ></textarea>
             <button
               onClick={(e) =>
-                newEntry(e, { title, content, id: uuidv4(), date: dateString })
+                newEntry(e, {
+                  title,
+                  content,
+                  id: uuidv4(),
+                  date: dateString,
+                })
               }
               type="submit"
               className="py-2 px-4 mx-auto w-[30vw] flex  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  mt-4"
