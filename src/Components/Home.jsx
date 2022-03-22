@@ -9,7 +9,6 @@ const Home = () => {
   const [content, setContent] = useState("");
 
   function newEntry(e, newObj) {
-    console.log("hit");
     e.preventDefault();
     entriesDB
       .doc(newObj.id)
@@ -58,8 +57,8 @@ const Home = () => {
               type="submit"
               className={
                 !title.length < 1 && !content.length < 1
-                  ? "py-2 px-4 mx-auto w-[30vw] flex  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  mt-4"
-                  : "py-2 px-4 mx-auto w-[30vw] flex  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  mt-4 opacity-50 cursor-not-allowed"
+                  ? "py-2 px-4 mx-auto w-[30vw] flex justify-center  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  mt-4"
+                  : " py-2 px-4 mx-auto w-[30vw] flex justify-center bg-indigo-600  text-white  text-base font-semibold   rounded-lg  mt-4 opacity-50 cursor-not-allowed"
               }
             >
               Submit!
