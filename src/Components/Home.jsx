@@ -9,9 +9,10 @@ const Home = () => {
   const [content, setContent] = useState("");
 
   function newEntry(e, newObj) {
+    console.log("hit");
     e.preventDefault();
     entriesDB
-      .doc()
+      .doc(newObj.id)
       .set(newObj)
       .catch((err) => alert(err));
     setContent("");
@@ -29,7 +30,7 @@ const Home = () => {
             type="text"
             value={title}
             className=" mx-auto w-[30vw] flex appearance-none border border-gray-300 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent mt-4 resize-none	"
-            name="email"
+            required
             placeholder="Entry Title"
           />
 
@@ -40,11 +41,12 @@ const Home = () => {
               className=" mx-auto w-[30vw] flex appearance-none border border-gray-300 py-2 px-4 bg-white text-gray-700 placeholder-gray-400 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent mt-4 resize-none	"
               id="comment"
               placeholder="Enter your comment"
-              name="comment"
+              required
               rows="5"
               cols="40"
             ></textarea>
             <button
+              disabled={title.length < 1 || content.length < 1}
               onClick={(e) =>
                 newEntry(e, {
                   title,
@@ -54,7 +56,11 @@ const Home = () => {
                 })
               }
               type="submit"
-              className="py-2 px-4 mx-auto w-[30vw] flex  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  mt-4"
+              className={
+                !title.length < 1 && !content.length < 1
+                  ? "py-2 px-4 mx-auto w-[30vw] flex  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  mt-4"
+                  : "py-2 px-4 mx-auto w-[30vw] flex  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  mt-4 opacity-50 cursor-not-allowed"
+              }
             >
               Submit!
             </button>
