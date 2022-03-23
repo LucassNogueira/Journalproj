@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import firebase from "../firebase/config";
 import { v4 as uuidv4 } from "uuid";
 import { dateString } from "./Date";
 
 const entriesDB = firebase.firestore().collection("Entries");
-const Home = () => {
+const Home = ({ currentUser, setCurrentUser }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 

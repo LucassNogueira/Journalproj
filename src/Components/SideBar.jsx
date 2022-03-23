@@ -4,7 +4,8 @@ import Home from "./svg/Home";
 import Login from "./svg/Login";
 import Posts from "./svg/Posts";
 import { Link } from "react-router-dom";
-const Navbar = () => {
+import SignOut from "./SignOut";
+const Navbar = ({ currentUser, setCurrentUser }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -45,12 +46,15 @@ const Navbar = () => {
         <Link to="/" onClick={() => setIsOpen(!isOpen)}>
           <NavItem title="Home" svgIcon={<Home />} />
         </Link>
-        <Link to="/login" onClick={() => setIsOpen(!isOpen)}>
-          <NavItem title="Log In" svgIcon={<Login />} />
+        <Link to="/register" onClick={() => setIsOpen(!isOpen)}>
+          <NavItem title="Register" svgIcon={<Login />} />
         </Link>
         <Link to="/feed" onClick={() => setIsOpen(!isOpen)}>
           <NavItem link={"feed"} title="Feed" svgIcon={<Posts />} />
         </Link>
+        <div className="fixed bottom-4">
+          <SignOut currentUser={currentUser} setCurrentUser={setCurrentUser} />
+        </div>
       </div>
     </>
   );

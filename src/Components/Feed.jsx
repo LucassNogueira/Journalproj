@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { entriesDB } from "./Home";
 import EntryCard from "./EntryCard";
 
-const Feed = () => {
+const Feed = ({ currentUser, setCurrentUser }) => {
   const [data, setData] = useState([]);
 
   function getData() {
